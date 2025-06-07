@@ -8,7 +8,6 @@ import java.sql.SQLException;
 
 public class UsuarioDAO {
 
-
     public Usuario validarUsuario(String username, String password) {
         String sql = "SELECT idUsuario, username, credenciales, rol FROM Usuarios WHERE username = ?";
         try (Connection conn = ConexionBD.conectar();
@@ -26,6 +25,7 @@ public class UsuarioDAO {
                         // Si las contraseñas coinciden, se crea el objeto usuario con sus datos
                         Usuario usuario = new Usuario(idUsuario, username, rol);
                         return usuario;
+                        
                     } else {
                         System.out.println("contraseña incorrecta");
                         return null;
